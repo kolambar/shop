@@ -13,6 +13,9 @@ class Category(models.Model):
     def __str__(self):
         return f'{self.name}'
 
+    def __repr__(self):
+        return f'{self.name}'
+
     class Meta:
         verbose_name = 'Категория'
         verbose_name_plural = 'Категории'
@@ -24,11 +27,14 @@ class Product(models.Model):
     photo = models.ImageField(upload_to='catalog/', verbose_name='Изображение', **NULLABLE)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, verbose_name='Название категории')
     cost = models.IntegerField(verbose_name='Цена')
-    creation_date = models.DateField(verbose_name='Дата создания')
-    last_change_date = models.DateField(verbose_name='Дата последнего изменения', **NULLABLE)
+    creation_date = models.DateField(verbose_name='Дата создания', auto_now_add=True)
+    last_change_date = models.DateField(verbose_name='Дата последнего изменения', auto_now=True)
 
     def __str__(self):
         return f'{self.name}, {self.category} - {self.cost}'
+
+    def __repr__(self):
+        return f'{self.name}'
 
     class Meta:
         verbose_name = 'Продукт'
