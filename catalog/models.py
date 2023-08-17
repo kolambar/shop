@@ -42,7 +42,7 @@ class Product(models.Model):
 
 
 class Blog(models.Model):
-    header = models.CharField(max_length=100, verbose_name='Заголовок')
+    header = models.CharField(max_length=100, verbose_name='Заголовок', unique=True)
     slug = models.CharField(max_length=100, verbose_name='slug', **NULLABLE)
     text = models.TextField(verbose_name='Содержание')
     image = models.ImageField(upload_to='catalog/', verbose_name='Изображение', **NULLABLE)

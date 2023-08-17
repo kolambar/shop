@@ -11,9 +11,9 @@
                 <li>Количество просмотров: {{ object.views_number }}</li>
                 <li>Опубликовано: {{ object.is_published }}</li>
             </ul>
-            <a href="{% url 'catalog:blog_view' object.pk %}" type="button" class="btn btn-lg btn-block btn-outline-primary">Подробнее</a>
-            <a href="{% url 'catalog:blog_edit' object.pk %}" type="button" class="btn btn-lg btn-block btn-warning">Исправить</a>
-            <a href="{% url 'catalog:blog_delete' object.pk %}" type="button" class="btn btn-lg btn-block btn-danger">Удалить</a>
+            <a href="{% url 'catalog:blog_view' object.slug %}" type="button" class="btn btn-lg btn-block btn-outline-primary">Подробнее</a>
+            <a href="{% url 'catalog:blog_edit' object.slug %}" type="button" class="btn btn-lg btn-block btn-warning">Исправить</a>
+            <a href="{% url 'catalog:blog_delete' object.slug %}" type="button" class="btn btn-lg btn-block btn-danger">Удалить</a>
 
         </div>
     </div>
