@@ -71,7 +71,7 @@ class BlogUpdateView(UpdateView):
     fields = ('header', 'text', 'image',)
 
     def get_success_url(self):
-        return reverse('catalog:blog_view', args=[self.object.pk])
+        return reverse('catalog:blog_view', args=[self.object.slug])
 
 
 class BlogDeleteView(DeleteView):
