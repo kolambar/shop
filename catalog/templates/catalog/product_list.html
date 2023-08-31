@@ -11,6 +11,9 @@
             <div class="container-fluid">
                 <div class="row text-center">
                     {% include 'catalog/includes/inc_prod.html'|slice:":100" %}
+                    <p>Версия:<p>
+                    <p>- {{version.version_number}} ({{version.is_current_version}})<p>
+                    <hr>
                 </div>
             </div>
         </div>
