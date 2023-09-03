@@ -7,12 +7,17 @@
 </div>
 <div class="row col-md">
     {% for object in object_list %}
-        <div class="col-6">
+    <div class="col-1"></div>
+
+        <div class="col-5">
             <div class="container-fluid">
                 <div class="row text-center">
                     {% include 'catalog/includes/inc_prod.html'|slice:":100" %}
-                    <p>Версия:<p>
-                    <p>- {{version.version_number}} ({{version.is_current_version}})<p>
+                    {% for version in object.version_set.all %}
+                        {% if version.is_current_version %}
+                            <p>Актуальная версия: {{ version.version_name }}<p>
+                        {% endif %}
+                    {% endfor %}
                     <hr>
                 </div>
             </div>
