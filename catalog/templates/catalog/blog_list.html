@@ -5,14 +5,20 @@
     <h1 class="display-4">Skystore</h1>
     <p class="lead">Тут можно посмотреть, что пишут про Skystore и создать свой отзыв о нём</p>
 </div>
-<nav class="ms-5">
-        <a class="p-2 btn btn-outline-primary" href="/create_blog/">Написать блог</a>
-</nav>
-<br />
+<div class="row col-md">
+    {% if user.is_authenticated %}
+        <div class="col-1"></div>
+        <nav class="ms-5">
+            <a class="p-2 btn btn-outline-primary" href="/create_blog/">Написать блог</a>
+        </nav>
 
+    {% endif %}
+</div>
+<br />
+<br />
 <div class="row col-md">
     {% for object in object_list %}
-    <div class="col-1"></div>
+        <div class="col-1"></div>
 
         <div class="col-5">
             <div class="container-fluid">

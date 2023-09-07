@@ -10,9 +10,15 @@
                 <li></li>
                 <li>Дата создания: {{ object.creation_date }}</li>
                 <li>Дата последнего изменения: {{ object.last_change_date }}</li>
+                {% if object.owner %}
+                    <li>Владелец: {{object.owner}}</li>
+                {% endif %}
+
             </ul>
             <a href="{% url 'catalog:product' object.pk %}" type="button" class="btn btn-lg btn-block btn-outline-primary">Подробнее</a>
-            <a href="{% url 'catalog:update_product' object.pk %}" type="button" class="btn btn-lg btn-block btn-outline-primary">Изменить</a>
+            {% if user.is_authenticated %}
+                <a href="{% url 'catalog:update_product' object.pk %}" type="button" class="btn btn-lg btn-block btn-outline-primary">Изменить</a>
+            {% endif %}
             <button type="button" class="btn btn-lg btn-block btn-outline-primary">Купить</button>
 
         </div>

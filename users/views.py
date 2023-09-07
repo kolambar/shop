@@ -66,6 +66,7 @@ def verify_view(request):
 
 class PasswordResetView(BasePasswordResetView):
     template_name = 'users/password_reset_form.html'
+    email_template_name = 'registration/password_reset_email.html'
 
 
 class PasswordResetDoneView(BasePasswordResetDoneView):
