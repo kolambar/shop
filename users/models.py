@@ -1,7 +1,7 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 
-from catalog.models import NULLABLE
+NULLABLE = {'blank': True, 'null': True}
 
 
 # Create your models here.
@@ -15,6 +15,7 @@ class User(AbstractUser):
     country = models.CharField(max_length=58, verbose_name='название страны', **NULLABLE)
     avatar = models.ImageField(upload_to='users/', verbose_name='аватар', **NULLABLE)
     verified = models.BooleanField(default=False, verbose_name='верифицирован', blank=True)
+    verified_password = models.IntegerField(verbose_name='ключ для верификации', **NULLABLE)
 
 
     USERNAME_FIELD = "email"

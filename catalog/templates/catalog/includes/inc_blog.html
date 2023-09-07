@@ -12,9 +12,10 @@
                 <li>Опубликовано: {{ object.is_published }}</li>
             </ul>
             <a href="{% url 'catalog:blog_view' object.slug %}" type="button" class="btn btn-lg btn-block btn-outline-primary">Подробнее</a>
-            <a href="{% url 'catalog:blog_edit' object.slug %}" type="button" class="btn btn-lg btn-block btn-warning">Исправить</a>
-            <a href="{% url 'catalog:blog_delete' object.slug %}" type="button" class="btn btn-lg btn-block btn-danger">Удалить</a>
-
+            {% if user.is_authenticated %}
+                <a href="{% url 'catalog:blog_edit' object.slug %}" type="button" class="btn btn-lg btn-block btn-warning">Исправить</a>
+                <a href="{% url 'catalog:blog_delete' object.slug %}" type="button" class="btn btn-lg btn-block btn-danger">Удалить</a>
+            {% endif %}
         </div>
     </div>
 </div>
