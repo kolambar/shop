@@ -66,7 +66,9 @@ def verify_view(request):
 
 class PasswordResetView(BasePasswordResetView):
     template_name = 'users/password_reset_form.html'
-    email_template_name = 'registration/password_reset_email.html'
+    email_template_name = 'users/password_reset_email.html'
+    from_email = 'fuckup@oscarbot.ru'
+    success_url = reverse_lazy('users:password_reset_done')
 
 
 class PasswordResetDoneView(BasePasswordResetDoneView):
@@ -74,8 +76,12 @@ class PasswordResetDoneView(BasePasswordResetDoneView):
 
 
 class PasswordResetConfirmView(BasePasswordResetConfirmView):
-    template_name = 'users/password_reset_done.html'
+    template_name = 'users/password_reset_confirm.html'
+    success_url = reverse_lazy('users:password_reset_complete')
+
 
 
 class PasswordResetCompleteView(BasePasswordResetCompleteView):
     template_name = 'users/password_reset_complete.html'
+    success_url = reverse_lazy('users:login')
+
