@@ -8,6 +8,10 @@ from pytils.translit import slugify
 
 from catalog.forms import ProductForm, VersionForm
 from catalog.models import Product, Blog, Version
+from catalog.services import get_products_of_
+
+
+#from catalog.services import get_products_of_
 
 
 # Create your views here.
@@ -22,11 +26,11 @@ def contacts(request):
     return render(request, 'catalog/contacts.html')
 
 
-def products(request):
-    context = {
-        'products_list': Product.objects.all(),
-    }
-    return render(request, 'catalog/products.html', context)
+# def products(request):
+#     context = {
+#         'products_list': Product.objects.all(),
+#     }
+#     return render(request, 'catalog/products.html', context)
 
 
 class ProductListView(ListView):
@@ -36,6 +40,20 @@ class ProductListView(ListView):
         context = super().get_context_data(**kwargs)
         context['version'] = Version.objects.all()
         return context
+
+
+class ProdOfCatListView(ListView):
+    model = Product
+    template_name = 'product_category_list.html'
+
+    def get_queryset(self, *args, **kwargs):
+        queryset = super().get_queryset(*args, **kwargs)
+        pk = self.kwargs.get('pk')
+
+        queryset = get_products_of_(queryset, pk)
+
+        return queryset
+
 
 
 class ProductDetailView(DetailView):
